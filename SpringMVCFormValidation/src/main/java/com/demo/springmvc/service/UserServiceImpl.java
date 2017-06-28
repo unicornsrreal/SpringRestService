@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		userDao.deleteUser(user);
+	public void deleteUser(int id) {
+		userDao.deleteUserById(id);
 
 	}
 
@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService {
 	public User findByLastName(String lastName) {
 		User user = userDao.findByLastName(lastName);
 		return user;
+	}
+
+	@Override
+	public void editUser(User user) {
+		userDao.updateUser(user);
 	}
 
 }

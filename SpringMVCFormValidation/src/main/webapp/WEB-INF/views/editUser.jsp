@@ -20,7 +20,7 @@
 
 		<h2>User Registration Form</h2>
 
-		<form:form method="POST" action="newuser" modelAttribute="user">
+		<form:form method="POST" action="/SpringMVCFormValidation/editUser/${id}" modelAttribute="user">
 			<form:input type="hidden" path="id" id="id" />
 
 
@@ -96,7 +96,7 @@
 
 			<div class="row">
 				<div class="form-actions floatRight">
-					<input type="submit" value="Register" class="btn btn-primary btn-sm"/>
+					<input type="submit" value="Update" class="btn btn-primary btn-sm"/>
 				</div>
 			</div>
 			<br />

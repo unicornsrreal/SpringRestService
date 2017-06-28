@@ -3,6 +3,7 @@ package com.demo.springmvc.dao;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -30,6 +31,13 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 	}
 
 	@Override
+	public void deleteUserById(int id) {
+		Query query = getSession().createSQLQuery("delete from User where id = :id");
+		query.setInteger("id", id);
+		query.executeUpdate();
+	}
+
+	@Override
 	public List<User> findAllUsers() {
 		Criteria criteria = createEntityCriteria();
 		return (List<User>) criteria.list();
@@ -40,6 +48,12 @@ public class UserDaoImpl extends AbstractDao<Integer, User> implements UserDao {
 		Criteria criteria = createEntityCriteria();
 		criteria.add(Restrictions.eq("lastName", lastName));
 		return (User) criteria.uniqueResult();
+	}
+
+	@Override
+	public void updateUser(User user) {
+		update(user);
+		
 	}
 
 }

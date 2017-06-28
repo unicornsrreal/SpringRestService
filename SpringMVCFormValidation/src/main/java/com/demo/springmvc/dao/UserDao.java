@@ -11,4 +11,6 @@ public interface UserDao {
 	void deleteUser(User user);
 	List<User> findAllUsers();
 	User findByLastName(String lastName);
+	void deleteUserById(int id);
+	void updateUser(User user);
 }
