@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="joda" uri="http://www.joda.org/joda/time/tags" %>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,7 +22,7 @@
             <tr>
 	            <td>${user.firstName}</td>
 	            <td>${user.lastName}</td>
-	            <td>${user.dob}</td>
+	            <td><joda:format pattern="dd.MM.yyyy" value="${user.dob}"/></td>
 	            <td>${user.email}</td>
 	            <td><a href="<c:url value='/editUser/${user.id}'/>">Edit</a></td>
 	            <td><a href="<c:url value='/deleteUser/${user.id}'/>">Delete</a></td>

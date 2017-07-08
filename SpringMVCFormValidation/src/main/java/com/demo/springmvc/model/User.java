@@ -1,7 +1,6 @@
 package com.demo.springmvc.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,11 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Type;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -38,9 +38,10 @@ public class User implements Serializable {
 	private String sex;
 	
 	@DateTimeFormat(pattern="dd/MM/yyyy") 
-	@Past @NotNull
+	@NotNull
 	@Column(name = "dateofbirth", nullable = false)
-	private Date dob;
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+	private LocalDate dob;
 	
 	@Email @NotEmpty
 	@Column(name = "email", nullable = false)
@@ -70,11 +71,11 @@ public class User implements Serializable {
 		this.sex = sex;
 	}
 
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 
